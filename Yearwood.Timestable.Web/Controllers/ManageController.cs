@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Yearwood.Timestable.Web.Models;
-using Yearwood.Timestable.Web.Models.ManageViewModels;
+using Yearwood.Timestable.Entities.Models;
+using Yearwood.Timestable.Entities.Models.ManageViewModels;
 
 namespace Yearwood.Timestable.Web.Controllers
 {

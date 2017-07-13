@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yearwood.Timestable.Common\Yearwood.Timestable.Common.csproj" />
+    <ProjectReference Include="..\Yearwood.Timestable.Entities\Yearwood.Timestable.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Yearwood.Timestable.Web.Data;
-using Yearwood.Timestable.Web.Models;
+using Yearwood.Timestable.Entities.Data;
+using Yearwood.Timestable.Entities.Models;
+using Yearwood.Timestable.Services;
 
 namespace Yearwood.Timestable.Web
 {
@@ -45,8 +47,13 @@ namespace Yearwood.Timestable.Web
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddScoped<IDataService, InMemoryDataService>();
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.SslPort = 44311;
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +67,7 @@ namespace Yearwood.Timestable.Web
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
+
             }
             else
             {
@@ -70,7 +78,11 @@ namespace Yearwood.Timestable.Web
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
+            {
+                ClientId = Configuration["Authentication:Microsoft:ClientId"],
+                ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"]
+            });
 
             app.UseMvc(routes =>
             {

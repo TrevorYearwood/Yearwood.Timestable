@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Yearwood.Timestable.Web.Models;
-using Yearwood.Timestable.Web.Models.AccountViewModels;
+using Yearwood.Timestable.Entities.Models;
+using Yearwood.Timestable.Entities.Models.AccountViewModels;
 
 namespace Yearwood.Timestable.Web.Controllers
 {
