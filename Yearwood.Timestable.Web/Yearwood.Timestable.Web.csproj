@@ -8,6 +8,12 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-Yearwood.Timestable.Web-21239ce3-40b4-4e44-9f57-606753e2943b</UserSecretsId>
   </PropertyGroup>
+  <PropertyGroup>
+    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\scripts\CountdownClock.js" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -37,5 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\TimesTable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\scripts\CountdownClock.js" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,6 +55,11 @@ namespace Yearwood.Timestable.Web
                 options.SslPort = 44311;
                 options.Filters.Add(new RequireHttpsAttribute());
             });
+
+            services.Configure<IISOptions>(options =>
+            {
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,7 +84,7 @@ namespace Yearwood.Timestable.Web
 
             app.UseIdentity();
 
-            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
+            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions
             {
                 ClientId = Configuration["Authentication:Microsoft:ClientId"],
                 ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"]
