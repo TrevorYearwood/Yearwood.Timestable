@@ -1,0 +1,34 @@
+@model TestResultsViewModel
+
+@{
+    ViewData["Title"] = "View Test Results";
+}
+
+<h2>Test Results</h2>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Test Date</th>
+                <th>Correct Answer</th>
+                <th>Total Questions</th>
+                <th>Percentage</th>
+                <th>TimeTaken</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var testResult in Model.TestResults)
+            {
+                <tr>
+                    <td>@testResult.TestResultDate</td>
+                    <td>@testResult.TotalCorrectAnswers</td>
+                    <td>@testResult.TotalNumberofQuestions</td>
+                    <td>@testResult.Percentage</td>
+                    <td>@testResult.TimeTaken</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
