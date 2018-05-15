@@ -38,7 +38,7 @@ namespace Yearwood.Timestable.Tests
             var result = calculationService.CalculatePercentage(correctAnswers, totalQuestions);
 
             //Assert
-            Assert.AreEqual(percentage, result);
+            Assert.That(result, Is.EqualTo(percentage));
         }
     }
 }

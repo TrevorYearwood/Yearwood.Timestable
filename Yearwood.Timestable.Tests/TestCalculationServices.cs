@@ -15,11 +15,11 @@ namespace Yearwood.Timestable.Tests
             var highestNumberRange = 11;
             var totalNumberRange = 10;
 
-            ////Act
+            //Act
             var result = timesTableService.GetRandomNumbers(highestNumberRange, totalNumberRange);
 
-            ////Assert
-            Assert.AreEqual(totalNumberRange, result.Count);
+            //Assert
+            Assert.That(result.Count, Is.EqualTo(totalNumberRange));
         }
     }
 }
